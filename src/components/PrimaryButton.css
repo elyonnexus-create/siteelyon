@@ -1,0 +1,24 @@
+.primary-button {
+  padding: 12px 24px;
+  background-color: var(--surface);
+  color: var(--primary);
+  border-radius: 118px; /* High border radius from user prompt */
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.primary-button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.primary-button:active {
+  transform: translateY(1px);
+}

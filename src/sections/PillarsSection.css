@@ -1,0 +1,41 @@
+.pillars-section {
+  background-color: var(--background);
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.pillars-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.section-title {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+.section-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .pillars-grid {
+    grid-template-columns: 1fr;
+  }
+}
