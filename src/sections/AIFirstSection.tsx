@@ -18,7 +18,7 @@ export function AIFirstSection() {
     <section
       ref={sectionRef}
       id="dna"
-      className="relative bg-[#050505] pt-12 pb-24 md:pt-16 md:pb-32 w-full overflow-hidden flex items-center font-sans"
+      className="relative bg-[#050505] pt-12 pb-12 md:pt-16 md:pb-32 w-full overflow-hidden flex items-center font-sans"
     >
       {/* Top Transition Blur */}
       <div

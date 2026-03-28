@@ -76,9 +76,9 @@ export function ScrollRevealSection() {
     <section
       ref={containerRef}
       id="porque-existimos"
-      className="relative h-[300vh] bg-[#0A0A0A]"
+      className="relative h-[200vh] md:h-[300vh] bg-[#0A0A0A]"
     >
-      <div className="sticky top-0 h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
+      <div className="sticky top-0 h-[70vh] md:h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
         {/* Watermark "Propósito" */}
         <span
           aria-hidden="true"

@@ -53,13 +53,7 @@ export function HeroSection() {
 
       {/* Bottom-left content block */}
       <div
-        style={{
-          position: 'absolute',
-          bottom: 56,
-          left: 56,
-          zIndex: 20,
-          maxWidth: 480
-        }}
+        className="absolute bottom-20 left-6 z-20 max-w-[480px] md:bottom-14 md:left-14"
       >
         <p
           style={{
@@ -99,7 +93,7 @@ export function HeroSection() {
       </div>
       {/* Floating Logo Aspect */}
       <div
-        className="absolute top-[20%] right-1/2 translate-x-1/2 md:translate-x-0 md:top-1/2 md:right-[5%] lg:right-[10%]"
+        className="absolute top-[30%] right-1/2 translate-x-1/2 md:translate-x-0 md:top-1/2 md:right-[5%] lg:right-[10%]"
         style={{
           transform: 'translateY(-50%)',
           zIndex: 10,

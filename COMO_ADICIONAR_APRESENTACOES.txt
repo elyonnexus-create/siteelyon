@@ -1,0 +1,60 @@
+=========================================================
+GUIA: COMO ADICIONAR NOVAS APRESENTAÇÕES E CÓDIGOS DE ACESSO
+=========================================================
+
+Neste guia rápido, você aprenderá como subir novos arquivos HTML de apresentação e criar novos códigos de acesso para eles na página "/apresentacao".
+
+
+---------------------------------------------------------
+PASSO 1: ONDE COLOCAR AS APRESENTAÇÕES (.html)
+---------------------------------------------------------
+Os arquivos HTML das suas apresentações devem ser salvos dentro da pasta `public` do projeto, para que o Vite os sirva publicamente sem erros e roteamentos estranhos.
+
+1. Navegue até a pasta do projeto: `Site Elyon\public`
+2. Existe (ou você pode criar) uma pasta chamada `presentations`.
+3. Coloque seus arquivos `.html` lá dentro.
+
+Exemplo de estrutura de pastas correta:
+Site Elyon/
+ └── public/
+     └── presentations/
+         ├── welcome.html
+         ├── pitch_deck_v1.html
+         └── cliente_novo.html
+
+
+---------------------------------------------------------
+PASSO 2: COMO CADASTRAR UM NOVO CÓDIGO NO SISTEMA
+---------------------------------------------------------
+Agora você precisa dizer ao sistema "Qual código abre qual apresentação".
+
+1. Abra o arquivo do código-fonte:
+   Caminho: `Site Elyon\src\components\ui\ApresentacaoFlow.tsx`
+
+2. Logo no topo do arquivo (nas primeiras linhas), você verá este bloco:
+   ```typescript
+   const CODE_MAPPING: Record<string, string> = {
+     'ELYON1': '/presentations/welcome.html',
+   };
+   ```
+
+3. Para adicionar um novo código, basta inserir uma nova linha com o CÓDIGO (em maiúsculo) e o CAMINHO do arquivo correspondente dentro da pasta `public`.
+
+Exemplo adicionando novos códigos:
+   ```typescript
+   const CODE_MAPPING: Record<string, string> = {
+     'ELYON1': '/presentations/welcome.html',
+     'CLIENTE25': '/presentations/cliente_novo.html',
+     'PITCH': '/presentations/pitch_deck_v1.html',
+   };
+   ```
+
+A B O P N T A M E N T O S:
+- O caminho (`/presentations/arquivo.html`) sempre começa com a barra `/` e faz referência ao que está *dentro* da pasta `public`. Você não precisa escrever "public" no caminho.
+- Lembre-se de colocar a vírgula `,` no final de cada linha adicionada (padrão do JavaScript).
+
+
+---------------------------------------------------------
+PASSO 3: TESTANDO
+---------------------------------------------------------
+Feito isso, se alguém acessar `http://localhost:5173/apresentacao` e digitar `CLIENTE25`, será automaticamente redirecionado com uma animação elegante para a sua apresentação.

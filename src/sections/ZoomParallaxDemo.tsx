@@ -38,7 +38,7 @@ export function ZoomParallaxDemo() {
 
 	return (
 		<div className="min-h-screen w-full bg-[#0A0A0A] text-white">
-			<div className="relative flex h-[50vh] items-center justify-center overflow-hidden">
+			<div className="relative flex h-[30vh] md:h-[50vh] items-center justify-center overflow-hidden">
 				{/* Radial spotlight */}
 				<div
 					aria-hidden="true"
@@ -53,7 +53,7 @@ export function ZoomParallaxDemo() {
 				</h1>
 			</div>
 			<ZoomParallax images={images} />
-			<div className="h-[10vh] bg-[#0A0A0A]" />
+			<div className="h-[5vh] md:h-[10vh] bg-[#0A0A0A]" />
 		</div>
 	);
 }

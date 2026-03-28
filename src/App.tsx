@@ -1,5 +1,6 @@
 import React from 'react';
 import Lenis from '@studio-freight/lenis';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './sections/HeroSection';
 import { ZoomParallaxDemo } from './sections/ZoomParallaxDemo';
@@ -15,9 +16,10 @@ import { FAQSection } from './sections/FAQSection';
 import { ClosingSection } from './sections/ClosingSection';
 import { Footer } from './components/Footer';
 import { SmoothCursor } from './components/ui/smooth-cursor';
+import ApresentacaoPage from './pages/ApresentacaoPage';
 import './App.css';
 
-function App() {
+function MainSite() {
   React.useEffect(() => {
     const lenis = new Lenis();
 
@@ -29,14 +31,12 @@ function App() {
     requestAnimationFrame(raf);
     
     return () => {
-      // Lenis doesn't have a built-in destroy in some versions, 
-      // but if it did, we'd call it here.
+      // Lenis cleanup if needed
     };
   }, []);
 
   return (
-    <div className="app-wrapper">
-      <SmoothCursor />
+    <>
       <Navbar />
       <main>
         <HeroSection />
@@ -53,7 +53,21 @@ function App() {
         <ClosingSection />
       </main>
       <Footer />
-    </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <div className="app-wrapper">
+        <SmoothCursor />
+        <Routes>
+          <Route path="/" element={<MainSite />} />
+          <Route path="/apresentacao" element={<ApresentacaoPage />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

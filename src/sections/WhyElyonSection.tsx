@@ -9,10 +9,10 @@ export function WhyElyonSection() {
   return (
     <section
       id="sobre"
-      className="bg-[#0A0A0A] pt-16 pb-0 md:pt-24 md:pb-0 px-6 overflow-hidden flex justify-center items-center"
+      className="bg-[#0A0A0A] pt-10 pb-0 md:pt-24 md:pb-16 px-6 overflow-hidden flex justify-center items-center"
     >
       <div
-        className="group relative grid grid-cols-1 justify-items-center md:grid-cols-2 gap-12 md:gap-20 lg:gap-32 max-w-7xl mx-auto items-center cursor-pointer"
+        className="group relative grid grid-cols-1 justify-items-center md:grid-cols-2 gap-6 md:gap-20 lg:gap-32 max-w-7xl mx-auto items-center cursor-pointer"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >

@@ -126,7 +126,7 @@ export function ServicesSection() {
   return (
     <section
       id="servicos"
-      className="py-24 md:py-32 bg-[#0A0A0A] w-full flex flex-col items-center justify-center overflow-hidden"
+      className="py-12 md:py-32 bg-[#0A0A0A] w-full flex flex-col items-center justify-center overflow-hidden"
     >
       <div className="container-premium max-w-[850px] flex flex-col items-center">
 
@@ -168,7 +168,7 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="text-gray-400 text-lg md:text-xl text-center mb-20 max-w-2xl"
+          className="text-gray-400 text-lg md:text-xl text-center mb-10 md:mb-20 max-w-2xl"
         >
           Somos os parceiros ideais para empresas e profissionais que procuram por:
         </motion.p>

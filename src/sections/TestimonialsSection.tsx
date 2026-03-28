@@ -51,8 +51,13 @@ export function TestimonialsSection() {
     const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
     setCanScrollLeft(scrollLeft > 20);
     setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 20);
+    
+    // Calculate index based on actual card width
+    const firstCard = containerRef.current.querySelector('.testimonial-card');
+    const itemWidth = firstCard ? firstCard.clientWidth + CARD_GAP : CARD_WIDTH + CARD_GAP;
+    
     const index = Math.min(
-      Math.round(scrollLeft / (CARD_WIDTH + CARD_GAP)),
+      Math.round(scrollLeft / itemWidth),
       testimonials.length - 1
     );
     setActiveIndex(index);
@@ -66,8 +71,11 @@ export function TestimonialsSection() {
 
   const scroll = (direction: 'left' | 'right') => {
     if (!containerRef.current) return;
+    const firstCard = containerRef.current.querySelector('.testimonial-card');
+    const itemWidth = firstCard ? firstCard.clientWidth + CARD_GAP : CARD_WIDTH + CARD_GAP;
+    
     containerRef.current.scrollBy({
-      left: direction === 'right' ? CARD_WIDTH + CARD_GAP : -(CARD_WIDTH + CARD_GAP),
+      left: direction === 'right' ? itemWidth : -itemWidth,
       behavior: 'smooth'
     });
   };
@@ -75,7 +83,8 @@ export function TestimonialsSection() {
   return (
     <section
       id="clientes"
-      style={{ backgroundColor: '#0A0A0A', padding: '120px 0', width: '100%', overflowX: 'hidden' }}
+      className="py-20 md:py-32"
+      style={{ backgroundColor: '#0A0A0A', width: '100%', overflowX: 'hidden' }}
     >
       {/* Header */}
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', textAlign: 'center', marginBottom: 48 }}>
@@ -136,10 +145,10 @@ export function TestimonialsSection() {
       </div>
 
       {/* Carousel Wrapper */}
-      <div style={{ position: 'relative', maxWidth: 1400, margin: '0 auto' }}>
+      <div style={{ position: 'relative', width: '100%', maxWidth: 1400, margin: '0 auto' }}>
 
-        {/* Left Nav */}
-        <div style={{ position: 'absolute', top: '40%', transform: 'translateY(-50%)', left: 24, zIndex: 30, pointerEvents: 'none' }}>
+        {/* Left Nav (Hidden on Mobile) */}
+        <div className="hidden md:block" style={{ position: 'absolute', top: '40%', transform: 'translateY(-50%)', left: 24, zIndex: 30, pointerEvents: 'none' }}>
           <AnimatePresence>
             {canScrollLeft && (
               <motion.button
@@ -165,8 +174,8 @@ export function TestimonialsSection() {
           </AnimatePresence>
         </div>
 
-        {/* Right Nav */}
-        <div style={{ position: 'absolute', top: '40%', transform: 'translateY(-50%)', right: 24, zIndex: 30, pointerEvents: 'none' }}>
+        {/* Right Nav (Hidden on Mobile) */}
+        <div className="hidden md:block" style={{ position: 'absolute', top: '40%', transform: 'translateY(-50%)', right: 24, zIndex: 30, pointerEvents: 'none' }}>
           <AnimatePresence>
             {canScrollRight && (
               <motion.button
@@ -202,7 +211,7 @@ export function TestimonialsSection() {
             overflowX: 'auto',
             scrollSnapType: 'x mandatory',
             gap: CARD_GAP,
-            padding: '16px 48px 80px',
+            padding: '16px 24px 80px',
             scrollbarWidth: 'none',
           }}
         >
@@ -215,11 +224,12 @@ export function TestimonialsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="testimonial-card"
               style={{
                 flexShrink: 0,
                 flexGrow: 0,
-                width: CARD_WIDTH,
-                minWidth: CARD_WIDTH,
+                width: 'min(480px, 85vw)',
+                minWidth: 'min(480px, 85vw)',
                 scrollSnapAlign: 'center',
                 backgroundColor: '#0d0d0d',
                 borderRadius: 32,
@@ -227,18 +237,16 @@ export function TestimonialsSection() {
                 boxShadow: '0 40px 80px -20px rgba(0,0,0,0.8)',
                 display: 'flex',
                 flexDirection: 'column',
-                padding: 16,
+                padding: '24px',
                 overflow: 'hidden'
               }}
             >
-              {/* Removed Image block */}
-
               {/* Text */}
-              <div style={{ display: 'flex', flexDirection: 'column', flex: 1, padding: '0 12px 12px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
                 <h3
                   style={{
                     fontFamily: 'Urbanist, sans-serif',
-                    fontSize: 20,
+                    fontSize: 'clamp(16px, 4vw, 20px)',
                     fontWeight: 800,
                     color: '#fff',
                     letterSpacing: '0.15em',
@@ -253,7 +261,7 @@ export function TestimonialsSection() {
                   style={{
                     fontFamily: 'Playfair Display, serif',
                     fontStyle: 'italic',
-                    fontSize: 18,
+                    fontSize: 'clamp(16px, 4.5vw, 18px)',
                     lineHeight: 1.6,
                     color: '#fff',
                     fontWeight: 400,
@@ -273,7 +281,7 @@ export function TestimonialsSection() {
           ))}
 
           {/* End spacer */}
-          <div style={{ flexShrink: 0, minWidth: 200 }} />
+          <div style={{ flexShrink: 0, minWidth: '10vw' }} />
         </div>
       </div>
     </section>

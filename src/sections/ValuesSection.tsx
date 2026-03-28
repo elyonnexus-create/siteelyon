@@ -49,7 +49,7 @@ export function ValuesSection() {
     <section
       ref={containerRef}
       id="valores"
-      className="relative h-[600vh] bg-[#0A0A0A]"
+      className="relative h-[400vh] md:h-[600vh] bg-[#0A0A0A]"
     >
       {/* Top Transition Blur */}
       <div
@@ -62,7 +62,7 @@ export function ValuesSection() {
           WebkitMaskImage: 'linear-gradient(to bottom, black 20%, transparent 100%)',
         }}
       />
-      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden py-24">
+      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden py-10 md:py-24">
 
         <div className="container-premium flex flex-col h-full max-w-6xl">
 
