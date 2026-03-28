@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState, useRef, useCallback, memo, useMemo } from "react";
+import React, { createContext, useEffect, useState, useRef, useCallback, memo, useMemo } from "react";
 import { Plus } from "lucide-react";
 
 // ===== TYPES =====
@@ -42,14 +42,6 @@ interface ChatInputProps {
    */
   animationDuration?: number;
   /**
-   * Text color
-   */
-  textColor?: string;
-  /**
-   * Background opacity (0.1 to 1.0)
-   */
-  backgroundOpacity?: number;
-  /**
    * Whether to show visual effects
    */
   showEffects?: boolean;
@@ -66,7 +58,6 @@ interface InputAreaProps {
   handleKeyDown: (e: React.KeyboardEvent) => void;
   disabled: boolean;
   isSubmitDisabled: boolean;
-  textColor: string;
 }
 
 interface GlowEffectsProps {
@@ -86,32 +77,27 @@ interface MenuButtonProps {
   menuRef: React.RefObject<HTMLDivElement>;
   isMenuOpen: boolean;
   onSelectOption: (option: MenuOption) => void;
-  textColor: string;
   menuOptions: MenuOption[];
 }
 
 interface SelectedOptionsProps {
   options: MenuOption[];
   onRemove: (option: MenuOption) => void;
-  textColor: string;
 }
 
 interface SendButtonProps {
   isDisabled: boolean;
-  textColor: string;
 }
 
 interface OptionsMenuProps {
   isOpen: boolean;
   onSelect: (option: MenuOption) => void;
-  textColor: string;
   menuOptions: MenuOption[];
 }
 
 interface OptionTagProps {
   option: MenuOption;
   onRemove: (option: MenuOption) => void;
-  textColor: string;
 }
 
 // ===== CONTEXT =====
@@ -122,26 +108,18 @@ interface ChatInputContextProps {
   addRipple: (x: number, y: number) => void;
   animationDuration: number;
   glowIntensity: number;
-  textColor: string;
   showEffects: boolean;
 }
 
 const ChatInputContext = createContext<ChatInputContextProps | undefined>(undefined);
 
-function useChatInputContext() {
-  const context = useContext(ChatInputContext);
-  if (context === undefined) {
-    throw new Error("useChatInputContext must be used within a ChatInputProvider");
-  }
-  return context;
-}
+
 
 // ===== COMPONENTS =====
 
 // Send button component
 const SendButton = memo(({ 
-  isDisabled,
-  textColor
+  isDisabled
 }: SendButtonProps) => {
   return (
     <button
@@ -178,7 +156,6 @@ const SendButton = memo(({
 const OptionsMenu = memo(({ 
   isOpen, 
   onSelect,
-  textColor,
   menuOptions 
 }: OptionsMenuProps) => {
   if (!isOpen) return null;
@@ -204,8 +181,7 @@ const OptionsMenu = memo(({
 // Option tag component
 const OptionTag = memo(({ 
   option, 
-  onRemove,
-  textColor 
+  onRemove
 }: OptionTagProps) => (
   <div
     className="flex items-center gap-1 bg-black/10 px-2 py-1 rounded-md text-xs text-[#0A1217]"
@@ -339,8 +315,7 @@ const InputArea = memo(({
   placeholder,
   handleKeyDown,
   disabled,
-  isSubmitDisabled,
-  textColor
+  isSubmitDisabled
 }: InputAreaProps) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   
@@ -374,7 +349,7 @@ const InputArea = memo(({
         }}
         disabled={disabled}
       />
-      <SendButton isDisabled={isSubmitDisabled} textColor={textColor} />
+      <SendButton isDisabled={isSubmitDisabled} />
     </div>
   );
 });
@@ -385,7 +360,6 @@ const MenuButton = memo(({
   menuRef,
   isMenuOpen,
   onSelectOption,
-  textColor,
   menuOptions
 }: MenuButtonProps) => (
   <div className="relative" ref={menuRef}>
@@ -400,7 +374,6 @@ const MenuButton = memo(({
     <OptionsMenu 
       isOpen={isMenuOpen} 
       onSelect={onSelectOption} 
-      textColor={textColor}
       menuOptions={menuOptions}
     />
   </div>
@@ -409,8 +382,7 @@ const MenuButton = memo(({
 // Selected options component
 const SelectedOptions = memo(({ 
   options,
-  onRemove,
-  textColor
+  onRemove
 }: SelectedOptionsProps) => {
   if (options.length === 0) return null;
   
@@ -421,7 +393,6 @@ const SelectedOptions = memo(({
           key={option} 
           option={option} 
           onRemove={onRemove} 
-          textColor={textColor}
         />
       ))}
     </div>
@@ -435,8 +406,6 @@ export default function ChatGPTInput({
   glowIntensity = 0.4,
   expandOnFocus = true,
   animationDuration = 500,
-  textColor = "#0A1217",
-  backgroundOpacity = 0.15,
   showEffects = true,
   menuOptions = ["Auto", "Max", "Search", "Plan"] as MenuOption[]
 }: ChatInputProps) {
@@ -566,9 +535,8 @@ export default function ChatGPTInput({
     addRipple,
     animationDuration,
     glowIntensity,
-    textColor,
     showEffects
-  }), [mousePosition, ripples, addRipple, animationDuration, glowIntensity, textColor, showEffects]);
+  }), [mousePosition, ripples, addRipple, animationDuration, glowIntensity, showEffects]);
 
   // Check if submit is disabled
   const isSubmitDisabled = disabled || !value.trim();
@@ -579,8 +547,7 @@ export default function ChatGPTInput({
   const baseWidthClass = hasModeSelected ? "w-96" : "w-64";
   const focusWidthClass = shouldExpandOnFocus ? "focus-within:w-80" : "";
 
-  // Background opacity class
-  const bgOpacityValue = Math.floor(backgroundOpacity * 100);
+
 
   return (
     <ChatInputContext.Provider value={contextValue}>
@@ -619,7 +586,6 @@ export default function ChatGPTInput({
               menuRef={menuRef}
               isMenuOpen={isMenuOpen}
               onSelectOption={selectOption}
-              textColor={textColor}
               menuOptions={menuOptions}
             />
             
@@ -630,7 +596,6 @@ export default function ChatGPTInput({
               handleKeyDown={handleKeyDown}
               disabled={disabled}
               isSubmitDisabled={isSubmitDisabled}
-              textColor={textColor}
             />
           </div>
           
@@ -638,7 +603,6 @@ export default function ChatGPTInput({
           <SelectedOptions 
             options={selectedOptions} 
             onRemove={removeOption}
-            textColor={textColor}
           />
         </div>
       </form>

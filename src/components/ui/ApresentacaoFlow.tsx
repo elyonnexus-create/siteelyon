@@ -38,6 +38,19 @@ const AuroraBackground = () => (
       }}
       transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
     />
+    <motion.div 
+      className="absolute top-[20%] left-[-10%] w-[50vw] h-[50vw] max-w-[600px] max-h-[600px] rounded-full mix-blend-screen"
+      style={{
+        background: 'radial-gradient(circle, rgba(201,168,76,0.05) 0%, rgba(0,0,0,0) 70%)',
+        filter: 'blur(100px)',
+      }}
+      animate={{
+        x: [0, 20, 0, -20, 0],
+        y: [0, 40, -40, 0, 0],
+        opacity: [0.3, 0.4, 0.3],
+      }}
+      transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+    />
     {/* Subtle noise texture over gradient */}
     <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")" }} />
     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
