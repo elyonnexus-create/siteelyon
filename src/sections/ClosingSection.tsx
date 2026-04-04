@@ -2,12 +2,12 @@ import { motion } from 'framer-motion';
 
 export function ClosingSection() {
   return (
-    <section 
-      id="contato" 
-      className="relative min-h-[90vh] bg-[#0A0A0A] w-full flex flex-col items-center justify-center overflow-hidden"
+    <section
+      id="contato"
+      className="section-no-py relative min-h-[90vh] bg-[#0A0A0A] w-full flex flex-col items-center justify-center overflow-hidden"
     >
       {/* Top Transition Blur */}
-      <div 
+      <div
         className="absolute top-0 left-0 w-full h-40 z-30 pointer-events-none"
         style={{
           background: 'linear-gradient(to bottom, #0A0A0A 0%, transparent 100%)',
@@ -19,26 +19,26 @@ export function ClosingSection() {
       />
 
       {/* Background Image with low opacity and top fade */}
-      <div 
+      <div
         className="absolute inset-0 z-0 bg-cover bg-center pointer-events-none opacity-[0.18]"
-        style={{ 
+        style={{
           backgroundImage: "url('/images/ClosingBG.png')",
           maskImage: 'linear-gradient(to bottom, transparent 0%, black 20%)',
           WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 20%)'
         }}
       />
-      
+
       {/* Radial Golden Glow */}
-      <div 
+      <div
         className="absolute inset-0 z-10 pointer-events-none"
         style={{
           background: 'radial-gradient(circle at center, rgba(201, 168, 76, 0.15) 0%, transparent 75%)'
         }}
       />
 
-      <div className="relative z-20 container-premium flex flex-col items-center text-center">
+      <div className="relative z-20 container-medium flex flex-col items-center text-center">
         {/* Top text */}
-        <motion.span 
+        <motion.span
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -48,54 +48,54 @@ export function ClosingSection() {
         </motion.span>
 
         {/* Main Title */}
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-4xl md:text-[64px] font-['Playfair_Display'] font-medium text-white mb-6 leading-[1.1] max-w-[950px]"
+          className="text-h1 font-accent font-medium text-white mb-6 leading-[1.1] max-w-[950px]"
         >
           O negócio que você imaginou <br className="hidden md:block" /> quando tudo começou.
         </motion.h2>
 
         {/* Highlighted Subtitle */}
-        <motion.h3 
+        <motion.h3
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-3xl md:text-5xl font-['Playfair_Display'] italic text-[#C9A84C] mb-14"
+          className="text-h2 font-accent font-italic text-[#C9A84C] mb-14"
         >
           Ainda é possível.
         </motion.h3>
 
         {/* Description */}
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="text-lg md:text-xl font-medium italic text-white/70 mb-16 leading-relaxed max-w-[700px]"
+          className="text-lg md:text-xl font-medium font-italic text-white/70 mb-[var(--gap-title-content,64px)] leading-relaxed max-w-[700px]"
         >
           Um projeto. Trinta dias. <br />
           Uma operação que finalmente trabalha por você.
         </motion.p>
 
         {/* Buttons */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col sm:flex-row items-center gap-10"
+          className="flex flex-col sm:flex-row items-center gap-8"
         >
-          <a 
+          <a
             href="https://wa.me/556181836313?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20iniciar%20um%20projeto."
             target="_blank"
             rel="noopener noreferrer"
             style={{
               padding: '14px 40px',
-              borderRadius: '118px',
+              borderRadius: 'var(--radius-full)',
               border: '1px solid rgba(255, 255, 255, 0.15)',
               backgroundColor: 'transparent',
               color: '#fff',
@@ -117,9 +117,9 @@ export function ClosingSection() {
           >
             INICIAR UM PROJETO
           </a>
-          <a 
+          <a
             href="#servicos"
-            className="text-white/50 hover:text-white font-bold text-xs tracking-[0.15em] uppercase flex items-center gap-3 transition-all duration-300"
+            className="text-white/40 hover:text-white font-bold text-xs tracking-[0.15em] uppercase flex items-center gap-3 transition-all duration-300"
           >
             Ver soluções <span className="text-xl">›</span>
           </a>

@@ -42,13 +42,13 @@ function RevealBuildItem({ item }: { item: any }) {
   const descColor = useTransform(
     scrollYProgress,
     [0, 0.3, 0.7, 1],
-    ["rgba(156, 163, 175, 0.15)", "rgba(156, 163, 175, 1)", "rgba(156, 163, 175, 1)", "rgba(156, 163, 175, 0.15)"]
+    ["rgba(255, 255, 255, 0.1)", "rgba(255, 255, 255, 0.7)", "rgba(255, 255, 255, 0.7)", "rgba(255, 255, 255, 0.1)"]
   );
 
   const tagsOpacity = useTransform(
     scrollYProgress,
     [0, 0.3, 0.7, 1],
-    [0.15, 1, 1, 0.15]
+    [0.1, 0.7, 0.7, 0.1]
   );
 
   // Efeito adicional: um sutil movimento para cima ao entrar
@@ -68,7 +68,7 @@ function RevealBuildItem({ item }: { item: any }) {
         <div className="flex-1 w-full">
           <motion.h3
             style={{ color: titleColor }}
-            className="text-2xl md:text-3xl font-bold font-['Urbanist'] mb-8 leading-tight transition-colors duration-300 flex items-start gap-4"
+            className="text-h3 mb-8 leading-tight transition-colors duration-300 flex items-start gap-4"
           >
             <span className="text-xl md:text-2xl font-bold opacity-30 tabular-nums mt-1">
               {item.number}
@@ -83,7 +83,7 @@ function RevealBuildItem({ item }: { item: any }) {
           </motion.p>
           <motion.div
             style={{ opacity: tagsOpacity }}
-            className="flex flex-wrap items-center mt-12 text-[10px] md:text-xs text-white/30 font-medium tracking-[0.2em] uppercase transition-opacity duration-300"
+            className="flex flex-wrap items-center mt-12 text-[10px] md:text-xs text-white/40 font-medium tracking-[0.2em] uppercase transition-opacity duration-300"
           >
             {item.tags.map((tag: string, tagIndex: number) => (
               <div key={tagIndex} className="flex items-center">
@@ -120,15 +120,15 @@ export function ServicesSection() {
   const introDescColor = useTransform(
     scrollYProgress,
     [0, 0.3, 0.8, 1],
-    ["rgba(156, 163, 175, 0.15)", "rgba(156, 163, 175, 1)", "rgba(156, 163, 175, 1)", "rgba(156, 163, 175, 0.15)"]
+    ["rgba(255, 255, 255, 0.15)", "rgba(255, 255, 255, 0.7)", "rgba(255, 255, 255, 0.7)", "rgba(255, 255, 255, 0.15)"]
   );
 
   return (
     <section
       id="servicos"
-      className="py-12 md:py-32 bg-[#0A0A0A] w-full flex flex-col items-center justify-center overflow-hidden"
+      className="bg-[#0A0A0A] w-full flex flex-col items-center justify-center overflow-hidden"
     >
-      <div className="container-premium max-w-[850px] flex flex-col items-center">
+      <div className="container-medium flex flex-col items-center">
 
         {/* Pill Tag */}
         <motion.div
@@ -158,7 +158,7 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-4xl md:text-[3.5rem] font-['Urbanist'] font-bold text-white mb-6 tracking-tight text-center leading-tight"
+          className="text-h1 text-white mb-6 tracking-tight text-center leading-tight"
         >
           Soluções personalizadas
         </motion.h2>
@@ -168,7 +168,7 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="text-gray-400 text-lg md:text-xl text-center mb-10 md:mb-20 max-w-2xl"
+          className="text-white/70 text-body-lg text-center mb-[var(--gap-title-content,64px)] max-w-2xl"
         >
           Somos os parceiros ideais para empresas e profissionais que procuram por:
         </motion.p>
@@ -179,13 +179,13 @@ export function ServicesSection() {
           <div ref={introRef}>
             <motion.h2
               style={{ color: introTitleColor }}
-              className="text-4xl md:text-5xl font-['Playfair_Display'] font-medium mb-4 transition-colors duration-100"
+              className="text-h2 font-accent font-medium mb-4 transition-colors duration-100"
             >
-              O que <motion.span style={{ color: introGoldColor }} className="italic transition-colors duration-100">construímos</motion.span> para você.
+              O que <motion.span style={{ color: introGoldColor }} className="font-italic transition-colors duration-100">construímos</motion.span> para você.
             </motion.h2>
             <motion.p
               style={{ color: introDescColor, paddingBottom: '40px' }}
-              className="text-lg border-b border-white/10 transition-colors duration-100"
+              className="text-body-base border-b border-white/10 transition-colors duration-100"
             >
               Antes de qualquer solução, existe uma pergunta: qual é o real problema? E daí que partimos sempre.
             </motion.p>

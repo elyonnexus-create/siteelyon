@@ -51,11 +51,11 @@ export function TestimonialsSection() {
     const { scrollLeft, scrollWidth, clientWidth } = containerRef.current;
     setCanScrollLeft(scrollLeft > 20);
     setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 20);
-    
+
     // Calculate index based on actual card width
     const firstCard = containerRef.current.querySelector('.testimonial-card');
     const itemWidth = firstCard ? firstCard.clientWidth + CARD_GAP : CARD_WIDTH + CARD_GAP;
-    
+
     const index = Math.min(
       Math.round(scrollLeft / itemWidth),
       testimonials.length - 1
@@ -73,7 +73,7 @@ export function TestimonialsSection() {
     if (!containerRef.current) return;
     const firstCard = containerRef.current.querySelector('.testimonial-card');
     const itemWidth = firstCard ? firstCard.clientWidth + CARD_GAP : CARD_WIDTH + CARD_GAP;
-    
+
     containerRef.current.scrollBy({
       left: direction === 'right' ? itemWidth : -itemWidth,
       behavior: 'smooth'
@@ -83,11 +83,10 @@ export function TestimonialsSection() {
   return (
     <section
       id="clientes"
-      className="py-20 md:py-32"
       style={{ backgroundColor: '#0A0A0A', width: '100%', overflowX: 'hidden' }}
     >
       {/* Header */}
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', textAlign: 'center', marginBottom: 48 }}>
+      <div className="container-premium text-center mb-[var(--gap-title-content,64px)]">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -97,7 +96,7 @@ export function TestimonialsSection() {
             border: '1px solid rgba(255, 255, 255, 0.15)',
             borderRadius: 9999,
             padding: '10px 32px',
-            marginBottom: 32,
+            marginBottom: 'var(--gap-pill-title, 32px)',
             fontSize: 12,
             fontWeight: 600,
             color: '#fff',
@@ -113,15 +112,7 @@ export function TestimonialsSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          style={{
-            fontFamily: 'Urbanist, sans-serif',
-            fontSize: 'clamp(2rem, 5vw, 3rem)',
-            fontWeight: 700,
-            color: '#fff',
-            marginBottom: 16,
-            letterSpacing: '-0.02em',
-            lineHeight: 1.1
-          }}
+          className="text-h1 text-white mb-4 tracking-tight leading-tight"
         >
           Depoimentos <br /> que nos movem.
         </motion.h2>
@@ -135,7 +126,7 @@ export function TestimonialsSection() {
                 width: 8,
                 height: 8,
                 borderRadius: '50%',
-                backgroundColor: i === activeIndex ? '#fff' : 'rgba(255,255,255,0.2)',
+                backgroundColor: i === activeIndex ? '#fff' : 'rgba(255,255,255,0.4)',
                 transform: i === activeIndex ? 'scale(1.25)' : 'scale(1)',
                 transition: 'all 0.3s ease'
               }}
@@ -145,7 +136,7 @@ export function TestimonialsSection() {
       </div>
 
       {/* Carousel Wrapper */}
-      <div style={{ position: 'relative', width: '100%', maxWidth: 1400, margin: '0 auto' }}>
+      <div className="relative w-full container-premium">
 
         {/* Left Nav (Hidden on Mobile) */}
         <div className="hidden md:block" style={{ position: 'absolute', top: '40%', transform: 'translateY(-50%)', left: 24, zIndex: 30, pointerEvents: 'none' }}>
@@ -156,6 +147,7 @@ export function TestimonialsSection() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => scroll('left')}
+                aria-label="Depoimento anterior"
                 style={{
                   pointerEvents: 'auto',
                   width: 48, height: 48,
@@ -183,6 +175,7 @@ export function TestimonialsSection() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => scroll('right')}
+                aria-label="Próximo depoimento"
                 style={{
                   pointerEvents: 'auto',
                   width: 48, height: 48,
@@ -201,6 +194,21 @@ export function TestimonialsSection() {
           </AnimatePresence>
         </div>
 
+        {/* Right Edge Fade — Desktop only */}
+        <div
+          className="hidden md:block"
+          style={{
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            width: '120px',
+            height: '100%',
+            background: 'linear-gradient(to left, #0A0A0A 0%, transparent 100%)',
+            zIndex: 20,
+            pointerEvents: 'none',
+          }}
+        />
+
         {/* Scroll Container */}
         <div
           ref={containerRef}
@@ -211,7 +219,7 @@ export function TestimonialsSection() {
             overflowX: 'auto',
             scrollSnapType: 'x mandatory',
             gap: CARD_GAP,
-            padding: '16px 24px 80px',
+            padding: '16px 0 0',
             scrollbarWidth: 'none',
           }}
         >
@@ -232,9 +240,9 @@ export function TestimonialsSection() {
                 minWidth: 'min(480px, 85vw)',
                 scrollSnapAlign: 'center',
                 backgroundColor: '#0d0d0d',
-                borderRadius: 32,
+                borderRadius: 'var(--radius-lg)',
                 border: '1px solid rgba(255,255,255,0.05)',
-                boxShadow: '0 40px 80px -20px rgba(0,0,0,0.8)',
+                boxShadow: 'none',
                 display: 'flex',
                 flexDirection: 'column',
                 padding: '24px',
@@ -244,37 +252,22 @@ export function TestimonialsSection() {
               {/* Text */}
               <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
                 <h3
-                  style={{
-                    fontFamily: 'Urbanist, sans-serif',
-                    fontSize: 'clamp(16px, 4vw, 20px)',
-                    fontWeight: 800,
-                    color: '#fff',
-                    letterSpacing: '0.15em',
-                    marginBottom: 16,
-                    opacity: 0.9
-                  }}
+                  className="font-bold text-white uppercase tracking-[0.15em] mb-4 opacity-90"
+                  style={{ fontSize: 'clamp(14px, 2vw, 16px)' }}
                 >
                   {client.logoText}
                 </h3>
 
                 <p
-                  style={{
-                    fontFamily: 'Playfair Display, serif',
-                    fontStyle: 'italic',
-                    fontSize: 'clamp(16px, 4.5vw, 18px)',
-                    lineHeight: 1.6,
-                    color: '#fff',
-                    fontWeight: 400,
-                    marginBottom: 24,
-                    flex: 1
-                  }}
+                  className="font-accent font-italic text-white mb-6 leading-relaxed flex-1"
+                  style={{ fontSize: 'clamp(18px, 3vw, 22px)' }}
                 >
                   "{client.quote}"
                 </p>
 
-                <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: 16, display: 'flex', flexDirection: 'column', gap: 4 }}>
-                  <span style={{ color: '#bbb', fontSize: 13, fontWeight: 500 }}>{client.name}</span>
-                  <span style={{ color: '#C9A84C', fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' }}>{client.role}</span>
+                <div className="border-t border-white/5 pt-4 flex flex-col gap-1">
+                  <span className="text-white/70 text-sm font-medium">{client.name}</span>
+                  <span className="text-[#C9A84C] text-[10px] md:text-xs font-bold tracking-[0.12em] uppercase">{client.role}</span>
                 </div>
               </div>
             </motion.div>

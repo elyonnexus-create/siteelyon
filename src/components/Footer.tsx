@@ -3,66 +3,28 @@ export function Footer() {
   return (
     <footer
       id="footer"
-      style={{
-        backgroundColor: '#0A0A0A',
-        borderTop: '1px solid rgba(255,255,255,0.05)',
-        width: '100%',
-        color: '#fff',
-        padding: '80px 0 40px'
-      }}
+      className="bg-[#0A0A0A] border-t border-white/5 w-full text-white relative z-50"
+      style={{ paddingTop: '80px', paddingBottom: '32px' }}
     >
-      <div 
-        className="container-premium"
-        style={{ 
-          margin: '0 auto',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-          gap: 60,
-          marginBottom: 80
-        }}
+      <div
+        className="container-premium grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-16 items-start"
       >
         {/* Brand & Tagline */}
-        <div style={{ gridColumn: 'span 2' }}>
-          <span
-            style={{
-              fontFamily: 'Urbanist, sans-serif',
-              fontSize: 18,
-              fontWeight: 800,
-              color: '#fff',
-              letterSpacing: '0.15em',
-              display: 'block',
-              marginBottom: 16
-            }}
-          >
+        <div className="md:col-span-2">
+          <span className="block font-bold text-lg text-white tracking-[0.15em] mb-4">
             ELYON NEXUS
           </span>
-          <p
-            style={{
-              fontSize: 22,
-              color: '#C9A84C',
-              lineHeight: 1.4,
-              maxWidth: 300
-            }}
-          >
+          <p className="text-body-lg text-[#C9A84C] max-w-[300px]">
             Construindo o que o tempo não destrói.
           </p>
         </div>
 
         {/* Links Column 1 */}
         <div>
-          <h4 
-            style={{ 
-              fontSize: 10, 
-              fontWeight: 700, 
-              color: 'rgba(255,255,255,0.3)', 
-              letterSpacing: '0.2em', 
-              textTransform: 'uppercase',
-              marginBottom: 24
-            }}
-          >
+          <h4 className="text-[10px] font-bold text-white/40 tracking-[0.2em] uppercase mb-6">
             Institucional
           </h4>
-          <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
+          <ul className="flex flex-col gap-3.5">
             {[
               { label: 'Por que existimos', href: '#porque-existimos' },
               { label: 'Nosso DNA', href: '#dna' },
@@ -78,16 +40,7 @@ export function Footer() {
                     const el = document.getElementById(item.href.replace('#', ''));
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  style={{
-                    fontFamily: 'Inter, sans-serif',
-                    fontSize: 13,
-                    fontWeight: 500,
-                    color: '#777',
-                    textDecoration: 'none',
-                    transition: 'color 0.3s ease'
-                  }}
-                  onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
-                  onMouseLeave={e => (e.currentTarget.style.color = '#777')}
+                  className="text-[13px] font-medium text-white/70 hover:text-white transition-colors duration-300"
                 >
                   {item.label}
                 </a>
@@ -98,32 +51,14 @@ export function Footer() {
 
         {/* Links Column 2 */}
         <div>
-          <h4 
-            style={{ 
-              fontSize: 10, 
-              fontWeight: 700, 
-              color: 'rgba(255,255,255,0.3)', 
-              letterSpacing: '0.2em', 
-              textTransform: 'uppercase',
-              marginBottom: 24
-            }}
-          >
+          <h4 className="text-[10px] font-bold text-white/40 tracking-[0.2em] uppercase mb-6">
             Conexões
           </h4>
-          <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
+          <ul className="flex flex-col gap-3.5">
             <li>
               <a
                 href="mailto:contato@elyonnexus.com.br"
-                style={{
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: 13,
-                  fontWeight: 500,
-                  color: '#777',
-                  textDecoration: 'none',
-                  transition: 'color 0.3s ease'
-                }}
-                onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
-                onMouseLeave={e => (e.currentTarget.style.color = '#777')}
+                className="text-[13px] font-medium text-white/70 hover:text-white transition-colors duration-300"
               >
                 contato@elyonnexus.com.br
               </a>
@@ -131,23 +66,14 @@ export function Footer() {
             {[
               { label: 'Instagram', href: 'https://www.instagram.com/elyon_nexus' },
               { label: 'LinkedIn', href: 'https://br.linkedin.com/in/elyon-nexus-8ab417343' },
-              { label: 'WhatsApp', href: 'https://wa.me/556181836313' } // Brasília
+              { label: 'WhatsApp', href: 'https://wa.me/556181836313' }
             ].map((item) => (
               <li key={item.label}>
                 <a
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{
-                    fontFamily: 'Inter, sans-serif',
-                    fontSize: 13,
-                    fontWeight: 500,
-                    color: '#777',
-                    textDecoration: 'none',
-                    transition: 'color 0.3s ease'
-                  }}
-                  onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
-                  onMouseLeave={e => (e.currentTarget.style.color = '#777')}
+                  className="text-[13px] font-medium text-white/70 hover:text-white transition-colors duration-300"
                 >
                   {item.label}
                 </a>
@@ -158,26 +84,8 @@ export function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div 
-        style={{ 
-          maxWidth: 1100, 
-          margin: '0 auto', 
-          paddingTop: 40,
-          borderTop: '1px solid rgba(255,255,255,0.03)',
-          display: 'flex',
-          justifyContent: 'center',
-          textAlign: 'center'
-        }}
-      >
-        <span 
-          style={{ 
-            fontFamily: 'Inter, sans-serif', 
-            fontSize: 11, 
-            fontWeight: 500,
-            color: 'rgba(255,255,255,0.2)', 
-            letterSpacing: '0.05em' 
-          }}
-        >
+      <div className="container-premium border-t border-white/5 text-center" style={{ marginTop: '64px', paddingTop: '32px' }}>
+        <span className="text-[11px] font-medium text-white/40 tracking-wider">
           CNPJ 64.308.632/0001-08 | Brasília, Brasil
         </span>
       </div>

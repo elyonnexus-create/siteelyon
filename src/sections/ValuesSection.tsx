@@ -3,27 +3,27 @@ import { useRef, useState } from 'react';
 
 const values = [
   {
-    title: "Curiosidade",
+    title: "Força",
     image: "https://framerusercontent.com/images/E0nlfxwQD5Ro79vVl64QrWjNdE.png"
   },
   {
-    title: "Capricho",
+    title: "Coragem",
     image: "https://framerusercontent.com/images/tQmYAatSf0f44ppWQO0sxXrvIfs.png"
   },
   {
-    title: "Consciência",
+    title: "Confiança",
     image: "https://framerusercontent.com/images/koOCZxRDQE8fn2PH8SJQ0PgIT4.png"
   },
   {
-    title: "Criatividade",
+    title: "Fé",
     image: "https://framerusercontent.com/images/K8WtQ1B0X2lE2EuTjnJoEoLFdQ.png"
   },
   {
-    title: "Comunicação",
+    title: "Propósito",
     image: "https://framerusercontent.com/images/oQPgiizGzD6WefpvhtnBFcbYc.png"
   },
   {
-    title: "Coragem",
+    title: "Essência",
     image: "https://framerusercontent.com/images/Xm2mG2QeteTlEthKIZLaLySDA.png"
   }
 ];
@@ -49,7 +49,7 @@ export function ValuesSection() {
     <section
       ref={containerRef}
       id="valores"
-      className="relative h-[400vh] md:h-[600vh] bg-[#0A0A0A]"
+      className="section-no-py relative h-[400vh] bg-[#0A0A0A] z-20"
     >
       {/* Top Transition Blur */}
       <div
@@ -62,14 +62,14 @@ export function ValuesSection() {
           WebkitMaskImage: 'linear-gradient(to bottom, black 20%, transparent 100%)',
         }}
       />
-      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden py-10 md:py-24">
+      <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-[#0A0A0A]" style={{ paddingTop: '80px', paddingBottom: '40px' }}>
 
-        <div className="container-premium flex flex-col h-full max-w-6xl">
+        <div className="container-premium flex flex-col h-full">
 
           {/* Header */}
-          <div className="flex flex-col items-center mb-8 md:mb-16 shrink-0">
+          <div className="flex flex-col items-center shrink-0" style={{ marginBottom: '48px' }}>
             <div className="w-2 h-2 rounded-full bg-white mb-6"></div>
-            <h2 className="text-3xl md:text-[3rem] font-['Urbanist'] font-semibold text-[#666666] text-center">
+            <h2 className="text-h1 text-white/40 text-center">
               Quais são os valores que nos guiam?
             </h2>
           </div>
@@ -88,12 +88,12 @@ export function ValuesSection() {
                   <div key={i} className="h-[100px] flex items-center justify-start w-full">
                     <motion.h3
                       animate={{
-                        color: activeIndex === i ? '#FFFFFF' : '#333333',
+                        color: activeIndex === i ? '#FFFFFF' : '#FFFFFF1A',
                         scale: activeIndex === i ? 1.05 : 1,
                         originX: 0
                       }}
                       transition={{ duration: 0.3 }}
-                      className="text-3xl sm:text-4xl md:text-6xl font-['Urbanist'] font-bold cursor-default tracking-tight text-left"
+                      className="text-h1 cursor-default tracking-tight text-left"
                     >
                       {item.title}
                     </motion.h3>

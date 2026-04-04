@@ -11,8 +11,42 @@
   --surface: #161616;
   --text-primary: #FFFFFF;
   --text-secondary: #A0A0A0;
-  --border-radius: 12px;
+  --radius-full: 9999px;
+  --radius-lg: 40px;
+  --radius-md: 24px;
+  --radius-sm: 12px;
   --spacing-base: 4px;
+  --container-full: 1280px;
+  --container-medium: 960px;
+  --container-narrow: 720px;
+
+  /* Typography Scale */
+  --font-primary: 'Urbanist', sans-serif;
+  --font-accent: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+
+  --text-display: clamp(3.5rem, 8vw, 8rem);
+  /* 56px - 128px */
+  --text-h1: clamp(2.5rem, 6vw, 4.5rem);
+  /* 40px - 72px */
+  --text-h2: clamp(2rem, 4vw, 3rem);
+  /* 32px - 48px */
+  --text-h3: clamp(1.5rem, 3vw, 2rem);
+  /* 24px - 32px */
+
+  --text-body-lg: clamp(1.125rem, 2.2vw, 1.25rem);
+  /* 18px - 20px */
+  --text-body-base: clamp(1rem, 1.8vw, 1.125rem);
+  /* 16px - 18px */
+
+  /* Spacing Tokens */
+  --section-py: clamp(80px, 10vh, 128px);
+  --gap-pill-title: 32px;
+  --gap-title-content: 64px;
+
+  /* Brand Colors */
+  --primary: #C9A84C;
+  --gold: #C9A84C;
 }
 
 * {
@@ -28,24 +62,79 @@ select {
   cursor: text !important;
 }
 
-html, body {
+html,
+body {
   background-color: var(--background);
   color: var(--text-primary);
-  font-family: 'Inter', sans-serif;
-  line-height: 1.5;
+  font-family: var(--font-body);
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: clip; /* clip doesn't break position:sticky! */
+  overflow-x: clip;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Urbanist', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-primary);
   font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
-.display-title {
-  font-family: 'Inter', sans-serif; 
+section {
+  padding: var(--section-py) 0;
+  width: 100%;
+}
+
+.section-no-py {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.text-display {
+  font-size: var(--text-display);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+}
+
+.text-h1 {
+  font-size: var(--text-h1);
+  font-weight: 700;
   letter-spacing: -0.02em;
+}
+
+.text-h2 {
+  font-size: var(--text-h2);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.text-h3 {
+  font-size: var(--text-h3);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.text-body-lg {
+  font-size: var(--text-body-lg);
+  line-height: 1.6;
+}
+
+.text-body-base {
+  font-size: var(--text-body-base);
+  line-height: 1.6;
+}
+
+.font-accent {
+  font-family: var(--font-accent);
+}
+
+.font-italic {
+  font-style: italic;
 }
 
 a {
@@ -59,34 +148,76 @@ ul {
 }
 
 /* Premium Layout Container System */
+.container-full,
 .container-premium {
   width: 100%;
-  max-width: 1280px;
+  max-width: var(--container-full);
   margin: 0 auto;
   padding-left: clamp(16px, 5vw, 40px);
   padding-right: clamp(16px, 5vw, 40px);
 }
 
-.flex { display: flex; }
-.flex-col { flex-direction: column; }
-.items-center { align-items: center; }
-.justify-center { justify-content: center; }
-.justify-between { justify-content: space-between; }
-.space-x-4 > * + * { margin-left: 1rem; }
-.space-x-8 > * + * { margin-left: 2rem; }
-.space-y-4 > * + * { margin-top: 1rem; }
-.space-y-6 > * + * { margin-top: 1.5rem; }
-.text-center { text-align: center; }
+.container-medium {
+  width: 100%;
+  max-width: var(--container-medium);
+  margin: 0 auto;
+  padding-left: clamp(16px, 5vw, 40px);
+  padding-right: clamp(16px, 5vw, 40px);
+}
+
+.container-narrow {
+  width: 100%;
+  max-width: var(--container-narrow);
+  margin: 0 auto;
+  padding-left: clamp(16px, 5vw, 40px);
+  padding-right: clamp(16px, 5vw, 40px);
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.space-x-4>*+* {
+  margin-left: 1rem;
+}
+
+.space-x-8>*+* {
+  margin-left: 2rem;
+}
+
+.space-y-4>*+* {
+  margin-top: 1rem;
+}
+
+.space-y-6>*+* {
+  margin-top: 1.5rem;
+}
+
+.text-center {
+  text-align: center;
+}
 
 /* Micro-animations */
 .hover-fade {
   transition: opacity 0.2s ease;
 }
+
 .hover-fade:hover {
   opacity: 0.8;
-}
-
-/* Sections */
-section {
-  padding: 80px 0;
 }

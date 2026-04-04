@@ -7,6 +7,7 @@ export function HeroSection() {
   return (
     <section
       id="home"
+      className="section-no-py"
       style={{
         position: 'relative',
         minHeight: '100vh',
@@ -53,42 +54,38 @@ export function HeroSection() {
 
       {/* Bottom-left content block */}
       <div
-        className="absolute bottom-20 left-6 z-20 max-w-[480px] md:bottom-14 md:left-14"
+        className="absolute bottom-32 md:bottom-14 left-0 right-0 z-20 pointer-events-none"
       >
-        <p
-          style={{
-            fontSize: 'clamp(1rem, 1.4vw, 1.35rem)',
-            lineHeight: 1.5,
-            color: '#D1D1D1',
-            marginBottom: 24,
-            fontWeight: 400
-          }}
-        >
-          A tecnologia que liberta.<br />
-          O propósito que guia.
-        </p>
+        <div className="container-full">
+          <div className="max-w-[480px] pointer-events-auto">
+            <p className="text-body-lg text-white/70 font-medium mb-6 md:mb-8">
+              A tecnologia que liberta.<br />
+              O propósito que guia.
+            </p>
 
-        <div style={{ display: 'flex', gap: 12 }}>
-          <a
-            href="https://wa.me/556181836313"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-fale-conosco hover:bg-[#3A3A3A] transition-all"
-            style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
-          >
-            Fale conosco
-          </a>
-          <a
-            href="#servicos"
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById('servicos')?.scrollIntoView({ behavior: 'smooth' });
-            }}
-            className="btn-nossos-servicos hover:border-white/40 transition-all"
-            style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
-          >
-            Nossos serviços
-          </a>
+            <div className="flex gap-8">
+              <a
+                href="https://wa.me/556181836313"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-fale-conosco hover:bg-[#3A3A3A] transition-all"
+                style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+              >
+                Fale conosco
+              </a>
+              <a
+                href="#servicos"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('servicos')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="btn-nossos-servicos hover:border-white/40 transition-all"
+                style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+              >
+                Nossos serviços
+              </a>
+            </div>
+          </div>
         </div>
       </div>
       {/* Floating Logo Aspect */}
@@ -104,8 +101,10 @@ export function HeroSection() {
         }}
       >
         <motion.img
-          src="/logo.png"
+          src="/logo.webp"
           alt="Logo Elyon 3D Effect"
+          width={500}
+          height={500}
           className="w-[280px] sm:w-[350px] md:w-[400px] lg:w-[500px] xl:w-[650px]"
           style={{ height: 'auto', filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))' }}
           animate={{

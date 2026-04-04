@@ -2,7 +2,7 @@
   padding: 12px 24px;
   background-color: var(--surface);
   color: var(--primary);
-  border-radius: 118px; /* High border radius from user prompt */
+  border-radius: var(--radius-full); /* High border radius from semantic token */
   font-weight: 600;
   font-family: 'Inter', sans-serif;
   border: none;

@@ -26,11 +26,11 @@ const methodologyCards = [
 
 export function MethodologySection() {
   return (
-    <section id="metodologia" className="py-24 md:py-32 bg-[#0A0A0A] w-full flex flex-col items-center justify-center overflow-hidden">
-      <div className="container-premium max-w-[1000px] flex flex-col items-center relative">
+    <section id="metodologia" className="bg-[#0A0A0A] w-full flex flex-col items-center justify-center overflow-hidden">
+      <div className="container-premium flex flex-col items-center relative">
 
         {/* Header Section */}
-        <div className="flex flex-col items-center text-center" style={{ marginBottom: 'clamp(80px, 12vw, 160px)' }}>
+        <div className="flex flex-col items-center text-center" style={{ marginBottom: '64px' }}>
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -56,10 +56,10 @@ export function MethodologySection() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-white mb-6 tracking-tight leading-tight max-w-4xl font-['Urbanist']"
+            className="text-white mb-6 tracking-tight leading-tight max-w-4xl"
           >
-            <span className="block text-3xl md:text-5xl font-bold mb-4">CORPO, ALMA E ESPIRITO.</span>
-            <span className="block text-2xl md:text-3xl font-semibold text-[#C9A84C] italic">Cuidamos das três dimensões do seu negócio.</span>
+            <span className="block text-h1 mb-4">CORPO, ALMA E ESPIRITO.</span>
+            <span className="block text-h2 text-[#C9A84C] font-accent font-italic">Cuidamos das três dimensões do seu negócio.</span>
           </motion.h2>
 
           <motion.p
@@ -67,7 +67,7 @@ export function MethodologySection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-gray-400 text-lg md:text-xl max-w-3xl leading-relaxed font-medium"
+            className="text-white/70 text-body-lg max-w-3xl leading-relaxed font-medium"
           >
             Porque um negócio verdadeiramente grande não é só lucrativo. É vivo. <br />
             Cada projeto que a Elyon Nexus entrega passa pelas três dimensões. Não por metodologia por convicção de que nenhuma delas sobrevive sozinha.
@@ -84,23 +84,23 @@ export function MethodologySection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="bg-[#050505] border border-white/5 rounded-[32px] md:rounded-[40px] grid grid-cols-1 md:grid-cols-[1.2fr_1fr] items-center gap-10 md:gap-14 relative group hover:border-white/10 transition-colors w-full box-border"
+              className="bg-[#0D0D0D] border border-white/5 rounded-[var(--radius-lg)] grid grid-cols-1 md:grid-cols-[1.2fr_1fr] items-center gap-10 md:gap-14 relative group hover:border-white/10 transition-colors w-full box-border"
               style={{ padding: 'clamp(32px, 5vw, 56px)' }}
             >
               {/* Left Content (Text) */}
               <div className="flex flex-col justify-center z-10 w-full min-w-0 min-h-0 h-auto">
                 <div className="flex items-center gap-3 mb-8">
-                  <span className="text-xl font-bold font-['Urbanist'] text-[#C9A84C] tracking-[0.1em]">{card.number}</span>
+                  <span className="text-xl font-bold text-[#C9A84C] tracking-[0.1em]">{card.number}</span>
                   <div className="text-[10px] font-bold text-[#C9A84C] tracking-[0.2em] uppercase">
                     {card.tag}
                   </div>
                 </div>
 
-                <h3 className="text-2xl md:text-3xl font-bold font-['Urbanist'] text-white mb-6 tracking-tight leading-tight">
+                <h3 className="text-h3 text-white mb-6 tracking-tight leading-tight">
                   {card.title}
                 </h3>
 
-                <p className="text-gray-400 text-base md:text-lg leading-relaxed font-medium whitespace-pre-line">
+                <p className="text-white/70 text-body-base font-medium whitespace-pre-line">
                   {card.description}
                 </p>
               </div>

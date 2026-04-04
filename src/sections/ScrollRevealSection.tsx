@@ -12,13 +12,13 @@ export function ScrollRevealSection() {
   const color1 = useTransform(
     scrollYProgress,
     [0, 0.05, 0.15, 0.25],
-    ["rgba(255,255,255,0.2)", "rgba(255,255,255,1)", "rgba(255,255,255,1)", "rgba(255,255,255,0.2)"]
+    ["rgba(255,255,255,0.1)", "rgba(255,255,255,1)", "rgba(255,255,255,1)", "rgba(255,255,255,0.1)"]
   );
 
   const color1Gold = useTransform(
     scrollYProgress,
     [0, 0.05, 0.15, 0.25],
-    ["rgba(201,168,76,0.2)", "rgba(201,168,76,1)", "rgba(201,168,76,1)", "rgba(201,168,76,0.2)"]
+    ["rgba(201,168,76,0.1)", "rgba(201,168,76,1)", "rgba(201,168,76,1)", "rgba(201,168,76,0.1)"]
   );
 
   // Block 2
@@ -26,11 +26,11 @@ export function ScrollRevealSection() {
     scrollYProgress,
     [0, 0.15, 0.25, 0.40, 0.50],
     [
-      "rgba(255,255,255,0.2)",
-      "rgba(255,255,255,0.2)",
+      "rgba(255,255,255,0.1)",
+      "rgba(255,255,255,0.1)",
       "rgba(255,255,255,1)",
       "rgba(255,255,255,1)",
-      "rgba(255,255,255,0.2)",
+      "rgba(255,255,255,0.1)",
     ]
   );
 
@@ -39,11 +39,11 @@ export function ScrollRevealSection() {
     scrollYProgress,
     [0, 0.40, 0.50, 0.65, 0.75],
     [
-      "rgba(255,255,255,0.2)",
-      "rgba(255,255,255,0.2)",
+      "rgba(255,255,255,0.1)",
+      "rgba(255,255,255,0.1)",
       "rgba(255,255,255,1)",
       "rgba(255,255,255,1)",
-      "rgba(255,255,255,0.2)",
+      "rgba(255,255,255,0.1)",
     ]
   );
 
@@ -52,11 +52,11 @@ export function ScrollRevealSection() {
     scrollYProgress,
     [0, 0.65, 0.75, 0.90, 0.95],
     [
-      "rgba(255,255,255,0.2)",
-      "rgba(255,255,255,0.2)",
+      "rgba(255,255,255,0.1)",
+      "rgba(255,255,255,0.1)",
       "rgba(255,255,255,1)",
       "rgba(255,255,255,1)",
-      "rgba(255,255,255,0.2)",
+      "rgba(255,255,255,0.1)",
     ]
   );
 
@@ -65,8 +65,8 @@ export function ScrollRevealSection() {
     scrollYProgress,
     [0, 0.90, 0.95, 1],
     [
-      "rgba(255,255,255,0.2)",
-      "rgba(255,255,255,0.2)",
+      "rgba(255,255,255,0.1)",
+      "rgba(255,255,255,0.1)",
       "rgba(255,255,255,1)",
       "rgba(255,255,255,1)",
     ]
@@ -76,9 +76,9 @@ export function ScrollRevealSection() {
     <section
       ref={containerRef}
       id="porque-existimos"
-      className="relative h-[200vh] md:h-[300vh] bg-[#0A0A0A]"
+      className="section-no-py relative h-[200vh] md:h-[300vh] bg-[#0A0A0A]"
     >
-      <div className="sticky top-0 h-[70vh] md:h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
+      <div className="sticky top-0 min-h-[450px] h-screen flex flex-col items-center justify-center overflow-hidden">
         {/* Watermark "Propósito" */}
         <span
           aria-hidden="true"
@@ -95,25 +95,25 @@ export function ScrollRevealSection() {
           Propósito
         </span>
 
-        <div className="container-premium flex flex-col justify-center relative z-10 max-w-5xl">
+        <div className="container-medium flex flex-col justify-center relative z-10">
 
           <motion.h2
             style={{ color: color1 }}
-            className="text-xl md:text-[2rem] font-['Urbanist'] font-semibold mb-4 md:mb-6"
+            className="text-h2 mb-4 md:mb-6"
           >
             Por que existimos?
           </motion.h2>
 
-          <div className="text-xl md:text-3xl lg:text-[2.2rem] leading-[1.4] font-medium font-['Inter'] tracking-tight">
+          <div className="text-body-lg font-medium tracking-tight">
             {/* Block 1 */}
             <motion.div
               style={{ color: color1 }}
               className="mb-8 md:mb-12 transition-colors duration-100"
             >
-              <span className="block font-bold md:text-5xl lg:text-6xl text-3xl font-['Urbanist'] mb-1">
+              <span className="block text-h1 mb-1" style={{ lineHeight: '1.1' }}>
                 Devolver o que foi tomado.
               </span>
-              <motion.span style={{ color: color1Gold }} className="block italic font-['Inter'] font-normal">
+              <motion.span style={{ color: color1Gold }} className="block italic font-normal font-accent">
                 Seu tempo. Sua clareza. Seu propósito.
               </motion.span>
             </motion.div>
@@ -160,7 +160,7 @@ export function ScrollRevealSection() {
       <div
         className="absolute bottom-0 left-0 w-full h-32 z-20 pointer-events-none"
         style={{
-          background: 'linear-gradient(to top, #050505 0%, transparent 100%)',
+          background: 'linear-gradient(to top, #0A0A0A 0%, transparent 100%)',
         }}
       />
     </section>

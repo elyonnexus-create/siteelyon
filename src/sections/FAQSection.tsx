@@ -36,18 +36,14 @@ export function FAQSection() {
   return (
     <section
       id="faq"
-      style={{
-        backgroundColor: '#0A0A0A',
-        padding: '100px 0 120px',
-        width: '100%'
-      }}
+      className="py-[var(--section-py)]"
     >
-      <div className="container-premium" style={{ maxWidth: 780 }}>
+      <div className="container-narrow">
 
         {/* Header */}
-        <div style={{ textAlign: 'center', marginBottom: 64 }}>
+        <div style={{ textAlign: 'center', marginBottom: 'var(--gap-title-content, 64px)' }}>
           {/* Pill */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 32 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 'var(--gap-pill-title, 32px)' }}>
             <div
               style={{
                 display: 'inline-block',
@@ -70,15 +66,7 @@ export function FAQSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            style={{
-              fontFamily: 'Urbanist, sans-serif',
-              fontSize: 'clamp(2.2rem, 5vw, 3.5rem)',
-              fontWeight: 800,
-              color: '#fff',
-              letterSpacing: '-0.02em',
-              marginBottom: 20,
-              lineHeight: 1.1
-            }}
+            className="text-h1 text-white mb-5 tracking-tight leading-tight"
           >
             Perguntas frequentes
           </motion.h2>
@@ -88,13 +76,7 @@ export function FAQSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            style={{
-              color: '#777',
-              fontSize: 15,
-              lineHeight: 1.7,
-              maxWidth: 520,
-              margin: '0 auto'
-            }}
+            className="text-white/40 text-base md:text-lg max-w-[520px] mx-auto leading-relaxed"
           >
             As mesmas que todos tinham — antes de começar.
           </motion.p>
@@ -133,13 +115,9 @@ export function FAQSection() {
                   }}
                 >
                   <span
+                    className="text-body-base font-semibold transition-colors duration-200"
                     style={{
-                      fontFamily: 'Inter, sans-serif',
-                      fontSize: 15,
-                      fontWeight: 500,
-                      color: isOpen ? '#fff' : '#ccc',
-                      lineHeight: 1.5,
-                      transition: 'color 0.2s ease'
+                      color: isOpen ? '#fff' : 'rgba(255, 255, 255, 0.4)',
                     }}
                   >
                     {faq.question}
@@ -174,14 +152,7 @@ export function FAQSection() {
                       style={{ overflow: 'hidden' }}
                     >
                       <p
-                        style={{
-                          fontFamily: 'Inter, sans-serif',
-                          fontSize: 14,
-                          lineHeight: 1.8,
-                          color: '#888',
-                          paddingBottom: 24,
-                          maxWidth: 660
-                        }}
+                        className="text-body-base text-white/70 pb-6 max-w-[660px]"
                       >
                         {faq.answer}
                       </p>
